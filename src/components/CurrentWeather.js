@@ -24,9 +24,7 @@ function CurrentWeather() {
   }, [latitude, longitude])
 
   async function currentWeatherData() {
-    const data = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=${APIKEY}`
-    )
+    const data = await fetch( `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=${APIKEY}`)
     .then((res) => res.json())
     .then((data) => data);
 
