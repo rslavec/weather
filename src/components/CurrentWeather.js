@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import WeatherApi from "../services/WeatherApi";
 
 function CurrentWeather() {
+  const api = new WeatherApi();
+
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
 
@@ -22,11 +25,8 @@ function CurrentWeather() {
   }, [latitude, longitude])
 
   async function currentWeatherData() {
-    const data = await fetch( `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=${process.env.OPENWEATERMAP_API_KEY}`)
-    .then((res) => res.json())
-    .then((data) => data);
-
-    console.log(data);
+    api.init();
+    const data = await api.getCurrentWeatherFromCoordinates(latitude, longitude);
 
     setLocation({ 
       name: data.name,
