@@ -5,7 +5,7 @@ export default class WeatherApi {
   }
 
   getCurrentWeatherFromCoordinates = async (latitude, longitude) => {
-    const data = await fetch(`${this.api_url}/weather?lat=${latitude}&lon=${longitude}&APPID=${this.api_key}`)
+    const data = await fetch(`${this.api_url}/weather?lat=${latitude}&lon=${longitude}&appid=${this.api_key}`)
     .then((res) => res.json())
     .then((data) => data);
 
